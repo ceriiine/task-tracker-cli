@@ -1,8 +1,10 @@
 var fs = require('fs')
 var path = require('path')
 
+//Database file name
 const dbFileName = 'db.json'
 
+// Read the list of tasks from the database
 function readTasks(fileName){
 
     var fileData = []
@@ -16,11 +18,13 @@ function readTasks(fileName){
     return fileData
 }
 
+// Write the list of tasks to the database
 function writeTasks(tasksData, fileName){
     var filePath = path.resolve(__dirname, fileName)
     fs.writeFileSync(filePath, JSON.stringify(tasksData, null, 2), 'utf-8')
 }
 
+// Get the nex ID 
 function getNextId(tasksData){
     if (tasksData.length === 0){
         return 1
@@ -88,7 +92,7 @@ function updateTask(id, description) {
     writeTasks(tasksData, dbFileName);
 }
 
-//Mark done
+//Update the status of a task
 function updateStatus(id, newStatus){
     
     if (!["in-progress", "todo", "done"].includes(newStatus)) {
@@ -113,7 +117,7 @@ function updateStatus(id, newStatus){
     writeTasks(tasksData, dbFileName);  
 }
 
-//List elements with status
+//List elements with status (or all elements if status not provided)
 function listTasks(status) {
     const tasksData = readTasks(dbFileName);
 

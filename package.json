@@ -1,12 +1,9 @@
 {
   "name": "task-tracker-cli",
   "version": "1.0.0",
-  "description": "A simple cli application to manage a TODO list.",
+  "description": "A simple CLI application to manage a TODO list.",
   "bin": {
     "task-cli": "./cli.js"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
